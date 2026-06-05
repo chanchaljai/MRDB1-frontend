@@ -22,21 +22,21 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await api.post("/auth/login", formData,{
-        credentials:'true'
+      const res = await api.post("/auth/login", formData, {
+        credentials: "true",
       });
 
       console.log(res);
 
       setMessage(res.data.message || "Login successful");
-
+      // save in localstorage
+      localStorage.setItem("role", res.data.role);
       // optional: token save (agar backend token bhej raha hai)
       if (res.data.token) {
       }
-
       // redirect after login
       setTimeout(() => {
-        if (res.data.role === "admin") navigate("/dashboard/admin"); 
+        if (res.data.role === "admin") navigate("/dashboard/admin");
         else navigate("/dashboard/user");
       }, 1000);
     } catch (error) {
