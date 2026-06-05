@@ -30,7 +30,6 @@ const App = () => {
           </UserRoute>
         }
       />
-      <Route path="/dashboard/user" element={<UserDashboard />} />
     </Routes>
   );
 };
