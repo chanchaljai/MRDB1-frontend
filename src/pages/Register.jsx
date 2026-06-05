@@ -39,7 +39,7 @@ const Register = () => {
       }, 1000);
     } catch (error) {
       console.error(error);
-      setMessage(error.response.data.message);
+      setMessage(error.response?.data?.message || "Something went wrong");
     }
   };
 
@@ -103,8 +103,10 @@ const Register = () => {
 
         <p className="text-center text-sm text-gray-500 mt-5">
           Already have an account?{" "}
-          <span 
-            onClick={() => navigate("/login")} className="text-purple-600 font-semibold cursor-pointer">
+          <span
+            onClick={() => navigate("/login")}
+            className="text-purple-600 font-semibold cursor-pointer"
+          >
             Login
           </span>
         </p>
