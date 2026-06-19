@@ -32,10 +32,13 @@ const Register = () => {
         password: "",
         role: "user",
       });
+      // save in localstorage
+      localStorage.setItem("role", res.data.role);
 
-      // redirect after register on login
+      // redirect after register on Home Page
       setTimeout(() => {
-        navigate("/login");
+        if (res.data.role === "admin") navigate("/dashboard/admin");
+        else navigate("/dashboard/user");
       }, 1000);
     } catch (error) {
       console.error(error);
